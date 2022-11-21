@@ -1,0 +1,93 @@
+.board-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.ant-page-header {
+  padding: 10px 24px !important;
+}
+
+.btn-start {
+  min-width: 280px;
+  max-width: 336px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  border-radius: 2px;
+  color: white;
+  border-style: none;
+  cursor: pointer;
+}
+.btn-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+.btn-start:hover {
+  background-color: #3d9ffc;
+}
+article {
+  padding: 20px;
+}
+article > .post > h1 {
+  font-size: 32px;
+}
+.post {
+  margin-top: 20px;
+}
+.post p {
+  color: #2d2e30;
+}
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.mt-3 {
+  margin-top: 0.75rem;
+}
+.px-3 {
+  padding: 0 0.75rem;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-2xl {
+  font-size: 1.563rem;
+}
+.text-3xl {
+  font-size: 1.953rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
+.mb-12 {
+  margin-bottom: 3rem;
+}
+.ml-1 {
+  margin-left: 0.25rem;
+}
+.pt-4 {
+  padding-top: 1rem;
+}
+.font-bold {
+  font-weight: bold;
+}
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-1 {
+  opacity: 1;
+}
+.text-blue-300 {
+  color: rgb(147 197 253);
+}
