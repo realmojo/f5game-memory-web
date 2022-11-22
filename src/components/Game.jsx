@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { memory } from "../stores/memory";
 import { AdsensePlay } from "./adsense/play";
 import { AdsenseClear } from "./adsense/clear";
-import { Modal, Button, Drawer } from "antd";
+import { Button, Drawer } from "antd";
 
 const MAX_WIDTH = window.innerWidth > 500 ? 500 : window.innerWidth;
 const containerPadding = 10;
@@ -94,10 +94,6 @@ export const Game = observer(() => {
     navigate("/");
   };
 
-  const handleCancel = () => {
-    setGameClearModalVisible(false);
-  };
-
   const doSelect = async (key) => {
     if (isStart) {
       if (memory.memoryItem[selectCountValue] === key) {
@@ -177,7 +173,7 @@ export const Game = observer(() => {
               : ""
           }
         >
-          {gameClearModalVisible ? <AdsenseClear /> : ""}
+          <AdsenseClear />
         </Drawer>
         <Drawer
           title="Game Over"
@@ -196,7 +192,7 @@ export const Game = observer(() => {
               : ""
           }
         >
-          {gameOverModalVisible ? <AdsenseClear /> : ""}
+          <AdsenseClear />
         </Drawer>
       </div>
     </div>
