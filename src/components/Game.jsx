@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import { memory } from "../stores/memory";
-import { AdsensePlay } from "./adsense/play";
-import { AdsenseClear } from "./adsense/clear";
 import { Button, Drawer } from "antd";
 
 const MAX_WIDTH = window.innerWidth > 500 ? 500 : window.innerWidth;
@@ -154,8 +152,6 @@ export const Game = observer(() => {
           })}
         </Container>
 
-        <AdsensePlay />
-
         <Drawer
           title={`LEVEL ${memory.level} CLEAR`}
           placement="bottom"
@@ -172,9 +168,7 @@ export const Game = observer(() => {
                 ]
               : ""
           }
-        >
-          <AdsenseClear />
-        </Drawer>
+        ></Drawer>
         <Drawer
           title="Game Over"
           placement="bottom"
@@ -191,9 +185,7 @@ export const Game = observer(() => {
                 ]
               : ""
           }
-        >
-          <AdsenseClear />
-        </Drawer>
+        ></Drawer>
       </div>
     </div>
   );

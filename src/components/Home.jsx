@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
-import { AdsenseMain } from "./adsense/main";
 
 export const Home = () => {
-  const [isAdsense, setIsAdsense] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsAdsense(true);
-    }, 10);
-    return setIsAdsense(false);
-  }, []);
-
   return (
     <div>
       <div className="play-container">
         <div className="text-center mt-3">
           <h1>순간기억력 - 두뇌운동</h1>
         </div>
-        <div className="my-4">{isAdsense ? <AdsenseMain /> : ""}</div>
         <div>
           <Link className="btn-list" to="/game/start">
             <button className="btn-start">START</button>
