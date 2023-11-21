@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import { memory } from "../stores/memory";
-import { Button, Drawer } from "antd";
+import { Button, Modal } from "antd";
 
 const MAX_WIDTH = window.innerWidth > 500 ? 500 : window.innerWidth;
 const containerPadding = 10;
@@ -43,11 +43,7 @@ export const Game = observer(() => {
   const [startText, setStartText] = useState("집중");
   const [isStart, setIsStart] = useState(false);
   const [gameClearModalVisible, setGameClearModalVisible] = useState(false);
-  const [gameClearModalButtonVisible, setGameClearModalButtonVisible] =
-    useState(false);
   const [gameOverModalVisible, setGameOverModalVisible] = useState(false);
-  const [gameOverModalButtonVisible, setGameOverModalButtonVisible] =
-    useState(false);
 
   const tileHeight = tileWidth;
 
@@ -83,13 +79,12 @@ export const Game = observer(() => {
 
   const doNext = () => {
     setGameInit();
-    setGameClearModalButtonVisible(false);
     setGameClearModalVisible(false);
   };
 
   const doRestart = () => {
+    setGameInit();
     setGameOverModalVisible(false);
-    navigate("/");
   };
 
   const doSelect = async (key) => {
@@ -104,16 +99,10 @@ export const Game = observer(() => {
           setIsStart(false);
           setGameClearModalVisible(true);
           memory.setLevel(memory.level + 1);
-          setTimeout(() => {
-            setGameClearModalButtonVisible(true);
-          }, 2000);
         }
       } else {
         setIsStart(false);
         setGameOverModalVisible(true);
-        setTimeout(() => {
-          setGameOverModalButtonVisible(true);
-        }, 2000);
       }
     }
   };
@@ -151,41 +140,40 @@ export const Game = observer(() => {
             );
           })}
         </Container>
-
-        <Drawer
+        <Modal
           title={`LEVEL ${memory.level} CLEAR`}
-          placement="bottom"
-          closable={false}
+          footer={null}
           open={gameClearModalVisible}
-          key="bottom-success"
-          maskClosable={false}
-          footer={
-            gameClearModalButtonVisible
-              ? [
-                  <Button key="submit" type="secondary" onClick={doNext}>
-                    Next
-                  </Button>,
-                ]
-              : ""
-          }
-        ></Drawer>
-        <Drawer
-          title="Game Over"
-          placement="bottom"
-          closable={false}
-          open={gameOverModalVisible}
-          key="bottom-over"
-          maskClosable={false}
-          footer={
-            gameOverModalButtonVisible
-              ? [
-                  <Button key="submit" type="secondary" onClick={doRestart}>
-                    다시 시도
-                  </Button>,
-                ]
-              : ""
-          }
-        ></Drawer>
+        >
+          <Button
+            key="submit"
+            type="primary"
+            onClick={doNext}
+            style={{
+              width: "100%",
+              height: 54,
+              fontSize: 24,
+              fontWeight: "bold",
+            }}
+          >
+            NEXT
+          </Button>
+        </Modal>
+        <Modal title="Game Over" footer={null} open={gameOverModalVisible}>
+          <Button
+            key="submit"
+            type="primary"
+            onClick={doRestart}
+            style={{
+              width: "100%",
+              height: 54,
+              fontSize: 24,
+              fontWeight: "bold",
+            }}
+          >
+            Re Try
+          </Button>
+        </Modal>
       </div>
     </div>
   );
